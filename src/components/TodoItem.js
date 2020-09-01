@@ -11,11 +11,17 @@ export class TodoItem extends Component {
             ? 'line-through' : 'none'
         }
     }
+
+    // Use bind while calling or use an arrow function
+    markComplete = (e) => {
+        console.log(this.props);
+    }
+
     render() {
         return (
             <div style={this.getStyle()}>
                 <p>
-                    <input type="checkbox" /> {' '}
+                    <input type="checkbox" onChange={ this.markComplete }/> {' '}
                     { this.props.todo.title }
                 </p>
             </div>
