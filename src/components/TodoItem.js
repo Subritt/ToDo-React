@@ -12,16 +12,12 @@ export class TodoItem extends Component {
         }
     }
 
-    // Use bind while calling or use an arrow function
-    markComplete = (e) => {
-        console.log(this.props);
-    }
-
     render() {
+        const { id, title, completed } = this.props.todo;
         return (
             <div style={this.getStyle()}>
                 <p>
-                    <input type="checkbox" onChange={ this.markComplete }/> {' '}
+                    <input type="checkbox" onChange={ this.props.markComplete.bind(this, id) }/> {' '}
                     { this.props.todo.title }
                 </p>
             </div>
