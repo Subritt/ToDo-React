@@ -6,26 +6,16 @@ import AddTodo from './components/AddTodo';
 import { v4 as uuid } from 'uuid';
 import './App.css';
 import About from './components/pages/About';
+import Axios from 'axios';
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid(),
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: uuid(),
-        title: 'React Crash Course',
-        completed: false
-      },
-      {
-        id: uuid(),
-        title: 'Team Sync-up',
-        completed: false
-      }
-    ]
+    todos: []
+  }
+
+  componentDidMount() {
+    Axios.get('http://jsonplaceholder.typicode.com/todos?_limit=10')
+    .then(res => this.setState({ todos: res.data }));
   }
 
   // Use bind while calling or use an arrow function
